@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Locator/static/css/main.6853a8be.css",
+    "main.js": "/Locator/static/js/main.ad4f98cf.js",
+    "static/media/canvas.png": "/Locator/static/media/canvas.e47c269b2cad7ffcc1cf.png",
+    "static/media/birdy.png": "/Locator/static/media/birdy.5b17124ccbfdffed4b7d.png",
+    "index.html": "/Locator/index.html",
+    "main.6853a8be.css.map": "/Locator/static/css/main.6853a8be.css.map",
+    "main.ad4f98cf.js.map": "/Locator/static/js/main.ad4f98cf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6853a8be.css",
+    "static/js/main.ad4f98cf.js"
+  ]
+}
