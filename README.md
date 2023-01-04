@@ -1,5 +1,6 @@
 # Locator
 Preview to Project:https://dosacat.github.io/Locator/
+
 React based app with Firebase backend.
 
 Timer created with useEffect and setInterval.
