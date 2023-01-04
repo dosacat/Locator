@@ -1,7 +1,6 @@
 import React, {useState,useEffect} from "react";
 import birdy from '../Assets/images/birdy.png';
 import ball from '../Assets/images/ball.png';
-import Timer from "./timer";
 import Canvas from "../Assets/images/canvas.png";
 import {db} from "../Firebase/firebase";
 import { collection,onSnapshot } from "firebase/firestore"; 
@@ -14,7 +13,7 @@ import Banner from "./banner";
 
 function Game() {
 
-    var arr=[] //To ensure same obejct not clicked twice.
+    var [arr,setArr]=useState([]) //To ensure same obejct not clicked twice.
 
     // to store ratios of image click location.
     const [dim,setDim]=useState({w:0,h:0})
@@ -36,6 +35,8 @@ function Game() {
 
     //To store retrieved firestore 
     const [loc, setLoc] = useState([]);
+
+    const [stop,setStop]=useState(false)
     
         
 
@@ -68,13 +69,16 @@ function Game() {
     // function to check whether player wins.
     function checkwin(){
         setFoundall(foundall+1)
-        
-        if (foundall===2){
-            alert("You win the game!")
-            setFoundall(0)
-    }}
+    }
 
-    useEffect(() => console.log("re-render because x changed:", x), [foundall])
+    useEffect(()=> {
+        if (foundall===2){
+            setStop(true)
+            alert("You win the game! Please refresh the page to restart a new game.")
+            setFoundall(0)}
+            
+        },[foundall,stop])
+
 
     //checks whether clicked correct location
     async function handleCardClick(event){
@@ -84,14 +88,12 @@ function Game() {
                     if (dim.w >= lo.X_left &&  (dim.w) <=lo.X_right){
                         if (dim.h >= lo.Y_top &&  (dim.h) <=lo.Y_bottom){
                             alert("You found item")
+                            setArr(event.target.id)
                             checkwin()
                             return;
                         }
                     }
                 }})
-        }
-        else{
-            arr.push(event.target.id)
         }
         
         
@@ -109,7 +111,7 @@ function Game() {
         
         {game && (
             <>
-            <Instructions birdy={birdy} ball={ball}/>
+            <Instructions birdy={birdy} ball={ball} stop={stop}/>
             <div className="flex justify-center bg-[#c8e5f5]"><img src={Canvas} alt="multiple objects camoflaged" className="object-fill h-[800px] w-[800px]  -mt-1 cursor-crosshair" onClick={option}/></div>
             </>
         )}

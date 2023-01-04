@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import { UilSearchAlt, UilQuestionCircle } from '@iconscout/react-unicons';
 
-function Header() {
+
+function Header({stop}) {
+  
   const [modal, setModal] = useState(false);
   function toggleRules(){
     setModal(!modal); 

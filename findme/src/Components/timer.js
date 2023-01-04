@@ -1,23 +1,25 @@
 import React, { useEffect } from 'react'
 
-function Timer() {
+function Timer({stop}) {
   const[state,setState]=React.useState({
     sec:0,
     min:0
   })
 
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setState({...state,
-//                 sec:state.sec+1})
-//       if(state.sec===59){
-//         setState({sec:0,
-//                  min:state.min+1});
-// }
-//     },1000);
+  useEffect(() => {
+    let interval; 
+  if(stop===false){
+          interval = setInterval(() => {
+          setState({...state,
+            sec:state.sec+1})
+          if(state.sec===59){
+            setState({sec:0,
+            min:state.min+1});
+      }
+        },1000)};
   
-//     return () => clearInterval(interval);
-//   });
+    return () => clearInterval(interval);
+  });
 
 
   return (

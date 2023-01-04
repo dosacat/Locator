@@ -1,7 +1,7 @@
 import React from 'react';
 import Timer from './timer';
 
-function Instructions({birdy,ball}) {
+function Instructions({birdy,ball,stop}) {
   return (
     <div className="flex justify-between bg-white h-30">
                 <div>
@@ -12,7 +12,7 @@ function Instructions({birdy,ball}) {
                         <li className="mx-6 mt-3"><img src={ball} alt="coloured ball"/></li>
                     </ul>
                 </div>
-                <div className="text-2xl p-4 font-semibold text-fuchsia-900"><Timer/></div>    
+                <div className="text-2xl p-4 font-semibold text-fuchsia-900"><Timer stop={stop}/></div>    
     </div>
   )
 }
